@@ -1,0 +1,5 @@
+# Hardware and measurement notes
+
+The benchmark ran on Windows 11 with Python 3.12. The processor was identified locally as an AMD Ryzen 7 7435HS. AMD lists 8 CPU cores, 16 threads, 512 KB L1, 4 MB L2, 16 MB L3, and support for two DDR5 memory channels. The actual installed memory-channel population was not readable through the available system interface. [AMD processor specifications](https://www.amd.com/en/products/processors/laptop/ryzen/7000-series/amd-ryzen-7-7435hs.html).
+
+The measured runtime increased from `0.057 s` at one process to `0.152 s` at 16 processes, so weak scaling was not constant on this host. Sixteen workers share eight physical cores; SMT, operating-system scheduling, and power limits can reduce throughput. Laptop thermal throttling is a possible cause of slower later runs, but temperature and clock frequency were not recorded, so it cannot be confirmed. This single-processor system does not expose a multi-socket NUMA boundary. NUMA placement can affect larger multi-socket runs, while this small compute-heavy loop has little memory traffic and is unlikely to be dominated by NUMA effects.

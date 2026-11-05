@@ -1,0 +1,3 @@
+Least-squares fit: speedup = 1 + (1 - alpha)(P - 1)
+alpha_observed = 0.59860085
+processor_counts = 1, 2, 4, 8, 16
